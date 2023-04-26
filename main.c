@@ -41,7 +41,9 @@ int main(void)
 	 *_printf("Unknown:[%r]\n");
 	 *printf("Unknown:[%r]\n");
 	 */
-
+	printf(NULL);
+	_printf(NULL);
+	_printf("Let's try to printf a simple sentence\\.\n");
 	_printf("Character:[%s]\n", NULL);
 	printf("Character:[%c, %c]\n", 'H', 'W');
 

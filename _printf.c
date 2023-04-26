@@ -10,9 +10,14 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
+	int len;
 	int count = 0;
 
 	va_start(args, format);
+
+	if (format == NULL)
+		return (0);
+
 	while (*format)
 	{
 		if (*format == '%')
@@ -25,8 +30,8 @@ int _printf(const char *format, ...)
 				count++;
 				break;
 			case 's':
-				print_string(args);
-				count++;
+				len = print_string(args);
+				count += len;
 				break;
 			case '%':
 				print_percent(args);

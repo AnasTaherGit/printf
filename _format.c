@@ -15,16 +15,23 @@ void print_char(va_list args)
  * @args: the string to print
  */
 
-void print_string(va_list args)
+int print_string(va_list args)
 {
 	char *str = va_arg(args, char *);
+	int count = 0;
+
 	if (str == NULL)
 		str = "(null)";
+	return (0);
+
 	while (*str)
 	{
 		_putchar(*str);
 		str++;
+		count++;
 	}
+
+	return (count);
 }
 
 /**
