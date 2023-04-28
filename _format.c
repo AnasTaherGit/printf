@@ -53,11 +53,12 @@ int format_percent(va_list list)
  * Return: number of characters printed
  */
 
-int format_number(va_list list)
-{
-	int count = 0;
-	int n = va_arg(list, int);
+/* int format_number(va_list list) */
+/* { */
+/* 	int count = 0; */
+/* 	int n = va_arg(list, int); */
 
-	count += display_sign(n);
-	return (count);
-}
+/* 	count += display_sign(n); */
+/* 	return (count); */
+/* }
+ */
