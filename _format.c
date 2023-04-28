@@ -16,12 +16,12 @@ int format_char(va_list list)
 }
 
 /**
- * print_string - prints a string
+ * format_string - prints a string
  * @list: string to print
  * Return: number of characters printed
  */
 
-int print_string(va_list list)
+int format_string(va_list list)
 {
 	int i;
 	char *str;
@@ -35,12 +35,12 @@ int print_string(va_list list)
 }
 
 /**
- * print_percent - prints a percent symbol
+ * format_percent - prints a percent symbol
  * @list: percent symbol to print
  * Return: number of characters printed
  */
 
-int print_percent(va_list list)
+int format_percent(va_list list)
 {
 	(void)list;
 	_putchar('%');
@@ -48,12 +48,12 @@ int print_percent(va_list list)
 }
 
 /**
- * print_number - prints a number
+ * format_number - prints a number
  * @list: number to print
  * Return: number of characters printed
  */
 
-int print_number(va_list list)
+int format_number(va_list list)
 {
 	int count = 0;
 	int n = va_arg(list, int);
