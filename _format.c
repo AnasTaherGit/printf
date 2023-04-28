@@ -1,46 +1,63 @@
 #include "main.h"
 
 /**
- * print_char - prints a character
- * @args: the character to print
+ * format_char - prints a character
+ * @list: character to print
+ * Return: number of characters printed
  */
 
-void print_char(va_list args)
+int format_char(va_list list)
 {
-	_putchar(va_arg(args, int));
+	char c;
+
+	c = (char)va_arg(list, int);
+	_putchar(c);
+	return (1);
 }
 
 /**
  * print_string - prints a string
- * @args: the string to print
+ * @list: string to print
+ * Return: number of characters printed
  */
 
-int print_string(va_list args)
+int print_string(va_list list)
 {
-	char *str = va_arg(args, char *);
-	int count = 0;
+	int i;
+	char *str;
 
+	str = va_arg(list, char *);
 	if (str == NULL)
 		str = "(null)";
-	return (0);
-
-	while (*str)
-	{
-		_putchar(*str);
-		str++;
-		count++;
-	}
-
-	return (count);
+	for (i = 0; str[i] != '\0'; i++)
+		_putchar(str[i]);
+	return (i);
 }
 
 /**
- * print_percent - prints a percent sign
- * @args: the percent sign to print
+ * print_percent - prints a percent symbol
+ * @list: percent symbol to print
+ * Return: number of characters printed
  */
 
-void print_percent(va_list args)
+int print_percent(va_list list)
 {
-	(void)args;
+	(void)list;
 	_putchar('%');
+	return (1);
+}
+
+/**
+ * print_number - prints a number
+ * @list: number to print
+ * Return: number of characters printed
+ */
+
+int print_number(va_list list)
+{
+	int count = 0;
+	int n = va_arg(list, int);
+
+	count += display_sign(n);
+	return (count);
 }

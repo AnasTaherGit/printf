@@ -1,56 +1,50 @@
 #include "main.h"
-
 /**
- * _printf - prints a formatted string
- * @format: the string to print
- *
- * Return: the number of characters printed
+ * _printf - prints anything
+ * @format: list of types of arguments passed to the function
+ * Return: number of characters printed (excluding the null
+ * byte used to end output to strings)
  */
 
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int len;
-	int count = 0;
+	int printed_chars = 0;
 
 	va_start(args, format);
-
 	if (format == NULL)
-		return (0);
-
+		return (-1);
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
+			if (!*format)
+				return (-1);
 			switch (*format)
 			{
 			case 'c':
-				print_char(args);
-				count++;
+				printed_chars += format_char(args);
 				break;
 			case 's':
-				len = print_string(args);
-				count += len;
+				printed_chars += format_string(args);
 				break;
 			case '%':
-				print_percent(args);
-				count++;
+				printed_chars += format_percent(args);
+				break;
+			case 'd':
+			case 'i':
+				printed_chars += format_number(args);
 				break;
 			default:
-				_putchar('%');
-				_putchar(*format);
-				count += 2;
+				_putchar('%'), _putchar(*format), printed_chars += 2, va_arg(args, int);
 				break;
 			}
 		}
 		else
-		{
-			_putchar(*format);
-			count++;
-		}
+			_putchar(*format), printed_chars++;
 		format++;
 	}
 	va_end(args);
-	return (count);
+	return (printed_chars);
 }
