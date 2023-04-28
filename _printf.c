@@ -32,10 +32,10 @@ int _printf(const char *format, ...)
 			case '%':
 				printed_chars += format_percent(args);
 				break;
-			/* case 'd': */
-			/* case 'i': */
-				/* printed_chars += format_number(args); */
-				/* break; */
+			case 'd':
+			case 'i':
+				printed_chars += format_number(args);
+				break;
 			default:
 				_putchar('%'), _putchar(*format), printed_chars += 2, va_arg(args, int);
 				break;
